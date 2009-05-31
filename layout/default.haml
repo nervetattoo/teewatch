@@ -1,0 +1,23 @@
+!!!
+%html{:xmlns=>'http://www.w3.org/1999/xhtml'}
+  %head
+    %title TeeWatch
+    %link{:rel=>'stylesheet',:type=>'text/css',:href=>'/css/style.css'}
+  %body
+    #main
+      #header
+        %h1 
+          %a{:href=>'/',:title=>'Frontpage'}
+            TeeWatch
+        #menu
+          %ul
+            %li
+              %a{:href=>'/',:title=>'Home'} Home
+            %li
+              %a{:href=>'/work',:title=>'Work'} Work
+            %li
+              %a{:href=>'/ubiquity',:title=>'Ubiquity'} Ubiquity
+          %br.clear
+      #content
+        =@content
+      #footer
