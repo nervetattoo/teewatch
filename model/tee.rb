@@ -4,6 +4,9 @@ class Tee < Sequel::Model
 
     varchar :title, :empty => false
     varchar :url, :empty => false, :unique => true
+    varchar :img, :unique => true
+    varchar :artist, :empty => false
+    belongs_to :source
   end
 
   create_table unless table_exists?

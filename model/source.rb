@@ -6,6 +6,8 @@ class Source < Sequel::Model
     varchar :url, :empty => false, :unique => true #http://
     varchar :logo
     varchar :safe_title, :unique => true
+
+    has_many :tees
   end
 
   create_table unless table_exists?
