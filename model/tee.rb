@@ -3,9 +3,9 @@ class Tee < Sequel::Model
     primary_key :id
 
     varchar :title, :empty => false
-    varchar :url, :empty => false, :unique => true
+    varchar :url, :unique => true,:empty => false
     varchar :img, :unique => true
-    varchar :artist, :empty => false
+    varchar :artist
     belongs_to :source
   end
 

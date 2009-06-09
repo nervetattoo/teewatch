@@ -7,9 +7,9 @@ require 'reader'
 
 class Threadless < Scraper
     def init
-        doc = parse 'bin/data_threadless.html'
+        doc = parse 'http://www.threadless.com/catalog/type,guys'
 
-        doc.css('div.product_container>div>a')[1..50].each do |link|
+        doc.css('div.product_container>div>a').each do |link|
             # Dont include Typetees and Select
             if link['href'] =~ /http/
                 next
@@ -23,8 +23,10 @@ class Threadless < Scraper
             product.css("div.page_head").each do |head|
                 title = head.css("span.blue").first.content
                 artist = head.css("span a").first.content
-                insert_tee(url,img,title,artist,2)
-                puts "#{url};#{img};#{title};#{artist}\n"
+                if insert_tee(url,img,title,artist,2)
+                    puts "#{url};#{img};#{title};#{artist}\n"
+                end
+                    puts "#{url};#{title} all ready exists\n"
             end
         end
     end
@@ -34,4 +36,4 @@ class Threadless < Scraper
     end
 end
 
-Threadless.run(ARGV)
+Threadless.run ARGV

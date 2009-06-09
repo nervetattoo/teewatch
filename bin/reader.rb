@@ -19,14 +19,20 @@ class Scraper
         puts "Not implemented for this Scraper"
     end
     def parse(url)
+        puts "Parsing #{url}"
         return Nokogiri::HTML.parse(open(url, "User-Agent" => @@user_agent))
     end
     def insert_tee(url,img,title,artist,source)
-        Tee.create :url => url,
-            :img => img,
-            :title => title,
-            :artist => artist,
-            :source => source
+        if Tee.find(:url => url) == nil
+            Tee.create :url => url,
+                :img => img,
+                :title => title,
+                :artist => artist,
+                :source => source
+            return true
+        else
+            return false
+        end
     end
     def self.run(args)
         legal = ['init','update']
