@@ -1,5 +1,9 @@
+$:.unshift(
+    File.join(File.dirname(__FILE__), '..'),
+    File.dirname(__FILE__)
+)
 require 'rubygems'
-require 'bin/reader'
+require 'reader'
 
 class Threadless < Scraper
     def init
@@ -30,11 +34,4 @@ class Threadless < Scraper
     end
 end
 
-legal = ['init','update']
-if ARGV.length > 0 && legal.include?(ARGV[0])
-    obj = Threadless.new
-    method = ARGV[0]
-    obj.method(method).call()
-else
-    puts "No method called. Use: init,update"
-end
+Threadless.run(ARGV)

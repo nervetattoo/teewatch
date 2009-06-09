@@ -1,3 +1,7 @@
+$:.unshift(
+    File.join(File.dirname(__FILE__), '..'),
+    File.dirname(__FILE__)
+)
 require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
@@ -23,5 +27,15 @@ class Scraper
             :title => title,
             :artist => artist,
             :source => source
+    end
+    def self.run(args)
+        legal = ['init','update']
+        if args.length > 0 && legal.include?(args[0])
+            obj = Threadless.new
+            method = args[0]
+            obj.method(method).call()
+        else
+            puts "No method called. Use: init,update"
+        end
     end
 end
