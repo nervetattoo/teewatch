@@ -1,3 +1,7 @@
+$:.unshift(
+    File.join(File.dirname(__FILE__), '..'),
+    File.dirname(__FILE__)
+)
 require 'rubygems'
 require 'model/init'
 

@@ -7,6 +7,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'net/http'
 require 'model/init'
+require 'extend_net'
 
 class Scraper
     def initialize
